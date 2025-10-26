@@ -65,3 +65,13 @@ private static boolean checkWin(char[][] table, char symbol) {
     return (table[0][0] == symbol && table[1][1] == symbol && table[2][2] == symbol) ||
             (table[0][2] == symbol && table[1][1] == symbol && table[2][0] == symbol);
 }
+private static boolean isDraw(char[][] table) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (table[i][j] == ' ') {
+                return false;
+            }
+        }
+    }
+    return true;
+}
