@@ -1,13 +1,26 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-void main() {
-  //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-  // to see how IntelliJ IDEA suggests fixing it.
-  IO.println(String.format("Hello and welcome!"));
+private static final char[][] MAPPING = {
+        {'7', '8', '9'},
+        {'4', '5', '6'},
+        {'1', '2', '3'}
+};
 
-  for (int i = 1; i <= 5; i++) {
-    //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-    // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-    IO.println("i = " + i);
-  }
+public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    do {
+        System.out.println("Хотите сыграть еще раз? (да/нет)");
+    } while (scanner.nextLine().toLowerCase().matches("д(а)?"));
+
+    System.out.println("Спасибо за игру!");
+    scanner.close();
+}
+private static void printTable(char[][] table) {
+    for (int i = 0; i < 3; i++) {
+        System.out.println("-------------");
+        for (int j = 0; j < 3; j++) {
+            System.out.print("| " + table[i][j] + " ");
+        }
+        System.out.println("|");
+    }
+    System.out.println("-------------\n");
 }
