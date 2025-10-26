@@ -8,11 +8,42 @@ public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
 
     do {
+        playGame(scanner);
         System.out.println("Хотите сыграть еще раз? (да/нет)");
     } while (scanner.nextLine().toLowerCase().matches("д(а)?"));
 
     System.out.println("Спасибо за игру!");
     scanner.close();
+}
+private static void playGame(Scanner scanner) {
+    System.out.println("Соответствие клеток номерам 1-9:");
+    printTable(MAPPING);
+
+    char[][] table = new char[3][3];
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            table[i][j] = ' ';
+        }
+    }
+
+    char currentPlayer = new Random().nextBoolean() ? 'X' : '0';
+
+    while (true) {
+        makeMove(table, currentPlayer, scanner);
+        printTable(table);
+
+        if (checkWin(table, currentPlayer)) {
+            System.out.println((currentPlayer == 'X' ? "Первый" : "Второй") + " игрок выиграл!");
+            return;
+        }
+
+        if (isDraw(table)) {
+            System.out.println("Ничья!");
+            return;
+        }
+
+        currentPlayer = (currentPlayer == 'X') ? '0' : 'X';
+    }
 }
 private static void printTable(char[][] table) {
     for (int i = 0; i < 3; i++) {
