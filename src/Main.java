@@ -54,3 +54,14 @@ private static boolean placeSymbol(char[][] table, char digit, char symbol) {
     System.out.println("Эта клетка уже занята! Попробуйте другую!");
     return false;
 }
+private static boolean checkWin(char[][] table, char symbol) {
+    for (int i = 0; i < 3; i++) {
+        if ((table[i][0] == symbol && table[i][1] == symbol && table[i][2] == symbol) ||
+                (table[0][i] == symbol && table[1][i] == symbol && table[2][i] == symbol)) {
+            return true;
+        }
+    }
+
+    return (table[0][0] == symbol && table[1][1] == symbol && table[2][2] == symbol) ||
+            (table[0][2] == symbol && table[1][1] == symbol && table[2][0] == symbol);
+}
