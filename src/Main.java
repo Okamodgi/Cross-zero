@@ -24,3 +24,15 @@ private static void printTable(char[][] table) {
     }
     System.out.println("-------------\n");
 }
+private static boolean placeSymbol(char[][] table, char digit, char symbol) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (MAPPING[i][j] == digit && table[i][j] == ' ') {
+                table[i][j] = symbol;
+                return true;
+            }
+        }
+    }
+    System.out.println("Эта клетка уже занята! Попробуйте другую!");
+    return false;
+}
