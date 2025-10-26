@@ -24,6 +24,24 @@ private static void printTable(char[][] table) {
     }
     System.out.println("-------------\n");
 }
+private static void makeMove(char[][] table, char symbol, Scanner scanner) {
+    String playerName = symbol == 'X' ? "Первый игрок" : "Второй игрок";
+
+    while (true) {
+        System.out.println(playerName + ", введите номер клетки (1-9):");
+        String input = scanner.nextLine();
+
+        if (input.length() == 1) {
+            char digit = input.charAt(0);
+            if (digit >= '1' && digit <= '9') {
+                if (placeSymbol(table, digit, symbol)) {
+                    return;
+                }
+            }
+        }
+        System.out.println("Неверный ввод! Пожалуйста, введите число от 1 до 9.");
+    }
+}
 private static boolean placeSymbol(char[][] table, char digit, char symbol) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
